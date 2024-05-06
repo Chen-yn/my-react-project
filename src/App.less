@@ -1,0 +1,165 @@
+// @import "~antd/dist/antd.less";
+
+* {
+  font-family: "pingfang SC, helvetica neue,arial, simsun, serif sans-serif";
+}
+
+
+.phone-style {
+  width: 337.5px;
+  height: 675px;
+  background-size: 100% 100%;
+}
+
+.dynamic-delete-button {
+  position: relative;
+  top: 4px;
+  margin: 0 8px;
+  color: #999;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dynamic-delete-button:hover {
+  color: #777;
+}
+
+.dynamic-delete-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#components-form-demo-form-context .user {
+  margin-bottom: 8px;
+}
+
+#components-form-demo-form-context .user .ant-avatar {
+  margin-right: 8px;
+}
+
+.ant-row-rtl #components-form-demo-form-context .user .ant-avatar {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.button-box .button-hover {
+  margin: 8px 0;
+}
+
+.button-box .button-delete {
+  display: none;
+}
+
+.button-box .button-hover:hover .button-delete {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 97, 97, 50%);
+  outline-offset: -2px;
+  border: 1px solid hsla(0deg, 0%, 100%, 30%);
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+.code-png {
+  width: 75px;
+  display: inline-block;
+}
+
+.m-b-10 {
+  margin-bottom: 10px!important;
+}
+
+.layout-breadcrumb {
+  margin: 0 16px;
+  padding: 10px 10px 0 10px;
+}
+
+.ant-layout-sider-trigger {
+  background: #fff!important;
+  color: rgba(0,0,0,.85) !important;
+}
+
+.workbench-mark {
+  cursor: move;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  z-index: 10;
+  border-radius: 16px;
+  text-align: center;
+  >div {
+      position: absolute;
+      top: 50%;
+      transform: translate(0,-50%);
+      font-size: 20px;
+      width: 100%;
+      text-align: center;
+      display: none;
+      color: gray;
+      font-weight: bold;
+      >p {
+          margin: 0;
+      }
+      .anticon {
+          margin-right: 5px;
+      }
+  }
+}
+.workbench-mark:hover {
+  background: #ffffffcc;
+      >div {
+          display: block;
+      }
+}
+
+.drag-container-card {
+  width: 100%!important;
+}
+
+.remove{
+  position: absolute;
+  right: -12px;
+  top: -18px;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  font-size: 24px;
+  color: #999;
+}
+/* .react-grid-item{
+  border: 1px solid #ececec;
+} */
+
+.react-grid-item:hover .remove{
+  display:inline-block;
+}
+
+.react-resizable-handle{
+  visibility: hidden;
+}
+
+.react-grid-item:hover .react-resizable-handle{
+  visibility: visible;
+}
