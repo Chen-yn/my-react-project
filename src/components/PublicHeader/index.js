@@ -57,7 +57,7 @@ function PublicHeader(props) {
         <Button
           type="link"
           block
-          // href="https://github.com/richLpf/antd-template-demo"
+          href="https://github.com/Chen-yn/my-react-project"
         >
           项目地址
         </Button>
