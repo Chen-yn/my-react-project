@@ -28,7 +28,7 @@ jobs:
     - name: 🔨 Build Project 
       run: | # 打包构建项目代码
         npm install --legacy-peer-deps
-        npm run build:pro
+        npm run build:prod
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@2.0.0 # 使用的sftp插件，将项目传到服务器上，这里使用2.0版本，最新版本4.0不支持sftp
       env:
