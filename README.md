@@ -1,4 +1,4 @@
-# Antd-template-project
+# my-react-project
 
 基于React Antd的模版项目
 
@@ -8,7 +8,6 @@
 - [x] prettier + eslint + husky
 - [x] 全局化配置
     - [x] 中英文切换
-- [x] 完成项目基于Docker的构建
 - [x] webpack引入路径别名
 - [x] 面包屑处理
 - [x] Mock数据
@@ -84,8 +83,6 @@ yarn start
 - react
 - antd
 - axios
-- [json2csv:导出csv文件](https://www.npmjs.com/package/json2csv)
-- [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor)
 - formik
 - yup
 - mui
@@ -119,13 +116,6 @@ yarn start
     - 缓存登录数据，判断当前页面是否登录
 - 注册页面
 
-
-## 六、自动化部署
-
-- Dockerfile
-- GitLab CI/CD
-- GitHub Action
-- 虚机部署
 
 ## 七、Q&A
 
