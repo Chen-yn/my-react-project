@@ -14,6 +14,8 @@ function BaseLayout() {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState([window.location.pathname]); //路由地址
+
+  //侧边栏伸缩
   const onCollapse = () => {
     setCollapsed(!collapsed);
   };
@@ -55,9 +57,12 @@ function BaseLayout() {
     }, []);
   };
 
+  //路由
   const generateRoute = (routes) => {
+    // console.log(routes,"路由");
     let result = [];
     routes.forEach((item) => {
+      // console.log(item,"item");
       if (hasChild(item)) {
         item.children.forEach((child) => {
           const renderComponent = generateItemRoute(child.key, child.component);
@@ -69,7 +74,8 @@ function BaseLayout() {
     });
     return result;
   };
-
+  
+  //处理子路由
   const generateItemRoute = (key, component) => {
     if (window.sessionStorage.getItem("username")) {
       return <Route key={key} path={key} element={component} />;
@@ -87,14 +93,18 @@ function BaseLayout() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      {/* 右侧选项 */}
       <PublicHeader user={username} />
+
       <Layout className="site-layout">
+        {/* 侧边栏 */}
         <Sider
           collapsible
           collapsed={collapsed}
           style={{ background: "#fff" }}
           onCollapse={onCollapse}
         >
+          {/* 导航菜单 */}
           <Menu
             theme="light"
             selectedKeys={selectedKeys}
@@ -104,12 +114,15 @@ function BaseLayout() {
             {genMenus(routes)}
           </Menu>
         </Sider>
+        {/* 内容部分 */}
         <Content style={{ margin: "0 16px", padding: 10 }}>
           <div style={{ marginBottom: 10 }}>
+            {/* 面包屑 */}
             <Breadcrumb
               routeChange={(pathname) => setSelectedKeys([pathname])}
             />
           </div>
+
           <React.Suspense
             fallback={
               <div style={{ marginTop: 200, textAlign: "center" }}>
@@ -117,6 +130,7 @@ function BaseLayout() {
               </div>
             }
           >
+            {/* 路由处理 */}
             <Routes>{generateRoute(routes)}</Routes>
           </React.Suspense>
         </Content>

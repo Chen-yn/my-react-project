@@ -29,8 +29,6 @@ function PublicHeader(props) {
     return state.systemStore.isScreenFull;
   });
 
-  console.log("isScreenFull", isScreenFull);
-
   let navigate = useNavigate();
 
   const handleLoginOut = () => {
@@ -44,7 +42,6 @@ function PublicHeader(props) {
   };
 
   const handleOpen = (isFull) => {
-    console.log("isFull", isFull);
     if (screenfull.isEnabled) {
       screenfull.toggle();
     }
@@ -57,7 +54,7 @@ function PublicHeader(props) {
         <Button
           type="link"
           block
-          href="https://github.com/Chen-yn/my-react-project"
+          href="https://github.com/Chen-yn/deploy-react-app.git"
         >
           项目地址
         </Button>
