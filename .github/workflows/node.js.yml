@@ -1,0 +1,41 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push: # 在推送的时候运行此action
+    branches: [ main ] # 指定分支
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest # 运行环境
+
+    strategy:
+      matrix:
+        node-version: [16.x] # 这里指定node版本
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2 # 这里使用了github官方提供的action,checkout项目到虚拟机上
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: 🔨 Build Project 
+      run: | # 打包构建项目代码
+        npm install --legacy-peer-deps
+        npm run build
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0 # 使用的sftp插件，将项目传到服务器上，这里使用2.0版本，最新版本4.0不支持sftp
+      env:
+        FTP_SERVER: ${{ secrets.SERVER_IP }} # 你的nginx服务器公网ip
+        FTP_USERNAME: ${{ secrets.USERNAME }} # 你的nginx服务器用户名
+        FTP_PASSWORD: ${{ secrets.PASSWORD }} # 你的nginx服务器密码
+        LOCAL_DIR: ./build/ # 你react项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
+        REMOTE_DIR: ${{ secrets.SERVER_DESTINATION }} # 你要把你build好的文件夹放到nginx服务器上的什么位置
+        METHOD: sftp # 指定服务为sftp
+        PORT: ${{ secrets.SERVER_PORT }} # 你的nginx服务器ssh端口
